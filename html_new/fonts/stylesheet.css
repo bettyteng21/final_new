@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Senty Golden Bell';
+    src: url('SentyGoldenBell.eot');
+    src: url('SentyGoldenBell.eot?#iefix') format('embedded-opentype'),
+        url('SentyGoldenBell.woff2') format('woff2'),
+        url('SentyGoldenBell.woff') format('woff'),
+        url('SentyGoldenBell.ttf') format('truetype'),
+        url('SentyGoldenBell.svg#SentyGoldenBell') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

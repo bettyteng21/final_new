@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  
+      
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  
+	  <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
+      <script src="https://www.gstatic.com/charts/loader.js"></script>
+	  
+	  
+      <style>
+           /*import我自己上傳的字體*/
+      	  @font-face {
+        		font-family: 'Senty Golden Bell';
+        		src: url('fonts/SentyGoldenBell.eot');
+        		src: url('fonts/SentyGoldenBell.eot?#iefix') format('embedded-opentype'),
+        			url('fonts/SentyGoldenBell.woff2') format('woff2'),
+        			url('fonts/SentyGoldenBell.woff') format('woff'),
+        			url('fonts/SentyGoldenBell.ttf') format('truetype'),
+        			url('fonts/SentyGoldenBell.svg#SentyGoldenBell') format('svg');
+        		font-weight: normal;
+        		font-style: normal;
+        		font-display: swap;
+      	  }
+  	  
+          body {
+              background: #eeeeee;
+          	  font-family: Arial, 'Senty Golden Bell', serif;
+          }
+		
+          .card-content {
+            text-align: center;
+            font-weight: bold;
+            background:  #e8eaf6;
+            font-size: 20px;
+			padding: 10px !important; /*文字的單行間距*/
+			margin-bottom: 10px; /*card間的間隔*/
+          }
+          
+          .card-image{
+            background:  #e8eaf6;
+			height: 330px; /*固定圖片大小*/
+            overflow: hidden;
+          } 
+
+		/*置頂鍵的設定*/
+		#myBtn {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Fixed/sticky position */
+		  bottom: 20px; /* Place the button at the bottom of the page */
+		  right: 30px; /* Place the button 30px from the right */
+		  z-index: 99; /* Make sure it does not overlap */
+		  border: none; /* Remove borders */
+		  outline: none; /* Remove outline */
+		  background-color: #3949ab; /* Set a background color */
+		  color: white; /* Text color */
+		  cursor: pointer; /* Add a mouse pointer on hover */
+		  padding: 15px; /* Some padding */
+		  border-radius: 10px; /* Rounded corners */
+		  font-size: 18px; /* Increase font size */
+		}
+
+		#myBtn:hover {
+		  background-color: #555; /* Add a dark-grey background on hover */
+		}
+		
+		
+
+		
+ 	      
+      </style>
+	  
+	  <!-- 匯入google表單 -->
+	  <!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+	  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	  <script>
+		function formresponse() {
+			var r = document.forms["form1"]["recommend"].value;
+			var w = document.forms["form1"]["reason"].value;
+			if (r==null || r=="") {
+				alert("劇名不可為空白");	
+				return false;
+			}
+			else if (w==null || w=="") {
+				alert("理由不可為空白");
+				return false;
+			}
+			else {
+				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
+				$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
+				alert("你推薦的" + r + "已送出");
+				location.reload(true/false); //送出後刷新頁面
+			}
+		}
+	  </script>	
+	 
+	  
+    </head>
+    
+    <body>
+	
+      <!--navbar-->      
+      <nav>
+        <div class="nav-wrapper indigo lighten-2">
+          <a href="#" class="brand-logo center">我的好劇收藏</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="https://www.beauty321.com/post/43831" target="_blank">播放量排行</a></li>
+            <li><a href="https://www.niusnews.com/=P2e6pu008" target="_blank">豆瓣評分排行</a></li>
+			<li><a href="https://docs.google.com/forms/d/1RMBDqEy78zj2fodTEGh6HnuCywCG1IbBIIHI9hBIMug/edit" target="_blank">觀眾推薦使用表單</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <div class="row" id="demo">
+        <!--下面迴圈的output會寫到這-->
+      </div>
+      <script>
+        var text="";
+        const picture = ["https://i.imgur.com/s7d2Yah.jpg", 
+                         "https://i.imgur.com/kFqmkE6.jpg", 
+                         "https://i.imgur.com/s7VuAMF.jpg", 
+                         "https://i.imgur.com/n2oFBre.png",
+                         "https://i.imgur.com/znYcrOa.jpg",
+                         "https://i.imgur.com/FaMCkws.jpg",        
+                         "https://i.imgur.com/cydhcUn.jpg",
+                         "https://i.imgur.com/2x7ZAKE.jpg",
+                         "https://i.imgur.com/QAB7uCO.jpg",
+                         "https://i.imgur.com/mDXXIHe.jpg",
+                         "https://i.imgur.com/xGvKsS2.jpg",
+                         "https://i.imgur.com/Rl1Bddv.jpg"];
+                   
+        const title = ["周生如故", "愛上特種兵", "山河令", "如意芳菲", "致我們暖暖的小時光",
+                       "錦衣之下", "致我們單純的小美好", "你是我的城池營壘", "以家人之名", "一生一世", "半是蜜糖半是傷", "變成你的那一天"];
+
+        
+        for (i = 0; i < picture.length; i++) {
+		  text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';		
+          text += '	<div class="col s12 m4 l3">';  
+          text += '  <div class="card hoverable">';
+          text += '    <div class="card-image">';
+          text += '      <a href="description.html?id='+i+'"> <img src="'+picture[i]+'" width="100%">'
+          text += '    </div>';
+		  text += '    <div class="card-content indigo lighten-5">';
+          text += '			<a class="indigo-text text-darken-3" href="description.html?id='+i+'">'+title[i]+'</a>';
+		  text += '	   </div>';
+          text += '  </div>';
+          text += '	</div>';
+		  text += '</div>';
+        }
+     
+        document.getElementById("demo").innerHTML = text;
+      </script>
+	  
+	  <!--水平分割線-->
+	  <hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">
+	  
+	  <!--google表單填寫-->
+	  <span id="formresponse"></span>
+	  <div class="row">
+		<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">
+			<form class="col s12" name="form1" action="javascript:formresponse();" style="border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
+			  <p style="font-size: 20px; font-weight: bold;">目前劇荒中，求好劇推薦<br/></p>
+			  <div class="row">
+				<div class="input-field col s10">
+				  <i class="material-icons prefix">favorite_border</i>
+				  <input type="text" name="recommend">
+				  <label for="icon_prefix">劇名</label>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="input-field col s10">
+				  <i class="material-icons prefix">feedback</i>
+				  <input type="text" name="reason">
+				  <label for="icon_telephone">理由</label>
+				</div>
+			  </div>
+			  
+			  <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:#e8eaf6;">
+				<i class="material-icons right" style="color:#3949ab;">send</i>
+				<input type="submit" value="Submit" style="color:#3949ab;">
+			  </button>
+			  <p><br/></p>
+			</form>
+		</div>
+	  </div>
+	  
+	  <!--水平分割線-->
+	  <hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">
+	
+	<!--可折疊的按鍵-->
+	
+	<iframe width="600" height="350" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQjWHZzTLXw8DtTfQgqiCXkj64eCJ-Iu3e5sZ6tyaT7dDUCZPMkEIjpPQ_t_RkNnZAkBj7tKzTek22/pubhtml?widget=true&amp;headers=false" 
+		></iframe>
+		
+
+	 
+	  <!--水平分割線-->
+	  <hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">
+	  
+	  <!--PIXNET API-->
+	  <div id="pixnet-stuff" class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto; border-style: solid; border-color:gray; border-radius: 5px; text-align: center;"> 
+	  </div>
+	  <script>
+		var xmlhttp = new XMLHttpRequest();
+		var url = "https://emma.pixnet.cc/mainpage/blog/categories/hot/19?page=1&per_page=12&api_version=2&format=json";
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var myArr = JSON.parse(xmlhttp.responseText);
+				myFunction(myArr);
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		
+		function setCharAt(str,index,chr) {
+			if(index > str.length-1) return str;
+			return str.substring(0,index) + chr + str.substring(index+1);
+		}
+
+		function myFunction(arr) {
+			var data = arr.articles;
+			var out = "";
+			var i, j;
+			out += '<p style="font-size: 20px; font-weight: bold;">更多影視相關資訊及心得<br/></p>';
+			out += '<p style="font-size: 12px; font-weight: bold;">節錄自痞客邦影視熱門專欄<br/></p>';
+			out += '<div class="row">';
+			for (i = 0; i < data.length; i++) {
+				out += '<div class="col s6 m2">';
+				out += '  <div class="card hoverable" style="height: 200px; background:  #e8eaf6;">';
+				
+				if ( data[i].thumb != "" ) {
+					out += '<div class="card-image" style="height: 150px; width:150">';
+					out += '	<a href=' + data[i].link + '"> <img src="' + data[i].thumb + '">';
+					out += '</div>';
+				}
+		  
+				if ( data[i].title != "" ) {
+					out += '<div class="card-content indigo lighten-5" style="font-size: 12px; padding: 5px !important;">';
+					if(data[i].title.length >= 22){
+						var temp_out= data[i].title.slice();
+						
+						temp_out = setCharAt(temp_out, 19,'.');
+						temp_out = setCharAt(temp_out, 20,'.');
+						temp_out = setCharAt(temp_out, 21,'.');
+						for (j=22; j< temp_out.length; j++){
+							temp_out = setCharAt(temp_out, j,'\0');
+						}
+						
+						out += '	<a class="indigo-text text-darken-3" href="' + data[i].link + '" target="_blank">' + temp_out;
+					}
+					else out += '	<a class="indigo-text text-darken-3" href="' + data[i].link + '" target="_blank">' + data[i].title;
+					
+				}
+				
+				out += '	</a>';
+				out += '	</div>';
+				out += '	</div>';
+				out += '</div>';
+			}
+			out += '</div>';
+			document.getElementById("pixnet-stuff").innerHTML = out;
+		}
+	  </script>
+	  
+	  <!--置頂鍵-->
+	  <button onclick="topFunction()" id="myBtn" title="Go to top" class="large material-icons">vertical_align_top</button>
+	  <script>
+		//Get the button:
+		mybutton = document.getElementById("myBtn");
+
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+		  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			mybutton.style.display = "block";
+		  } else {
+			mybutton.style.display = "none";
+		  }
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+		  document.body.scrollTop = 0; // For Safari
+		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+		}
+	  </script>
+	  
+	  <p><br/> <p/>
+	  
+      <!--footer-->
+      <footer class="page-footer indigo lighten-2">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">我的好劇收藏</h5>
+                <p class="grey-text text-lighten-4">今年入坑陸劇 目前我認為值得一看得好劇們</p>
+              </div>
+              <div>
+                 <img src="https://truth.bahamut.com.tw/s01/202108/b37ec81cfaeb0c13afe7fd4dbdc25c31.JPG" width="200" height="300" style="float:right" />
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">相關觀看連結</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://movie.douban.com/" target="_blank">大陸豆瓣評分</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.iq.com/" target="_blank">愛奇藝官網</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.netflix.com/browse" target="_blank">Netflix官網</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>       
+          <div class="footer-copyright">
+            <div class="container">
+            © 2021 Copy NO right Text
+            </div>
+          </div>
+      </footer>
+	  
+    </body>
+  </html>
