@@ -178,10 +178,11 @@
         }
       
         function processSheetsData_feedback(response_feedback) {
+		alert("aaa");
           var data = response_feedback.getDataTable();
           var columns = data.getNumberOfColumns();
           var rows = data.getNumberOfRows();
-          alert(rows);
+          
           var output="";
 		  for (var i = 1; i < rows; i++) {
 		  output += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
