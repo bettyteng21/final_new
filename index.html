@@ -193,9 +193,9 @@
 		  output += '	<div class="col s12 m6">'; 
 		  output += '  		<div class="card hoverable">';
 		  output += '    		<div class="card-content indigo lighten-5">';
-		  output += '				<p style="font-size:15px;">劇名 '+data.getFormattedValue(i,1)+'<br/></p>';
+		  output += '				<p style="font-size:15px;">《 '+data.getFormattedValue(i,1)+'》<br/></p>';
 		  output += '				<hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">';
-		  output += '				<p style="font-size:12px;">理由 '+data.getFormattedValue(i,2)+'<br/></p>';
+		  output += '				<p style="font-size:12px;">推薦原因: '+data.getFormattedValue(i,2)+'<br/></p>';
 		  output += '			</div>';
 		  output += '		</div>';
 		  output += '	</div>';
@@ -264,13 +264,8 @@
 	  <!--水平分割線-->
 	  <hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">
 	
-	<!--可折疊的按鍵-->
-	
-	<iframe width="600" height="350" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQjWHZzTLXw8DtTfQgqiCXkj64eCJ-Iu3e5sZ6tyaT7dDUCZPMkEIjpPQ_t_RkNnZAkBj7tKzTek22/pubhtml?widget=true&amp;headers=false" 
-		></iframe>
-		
-
-	<div id="feedback-stuff" class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto; border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
+	  <!--呈現表單的回饋-->
+	  <div id="feedback-stuff" class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto; border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
         <!--上面迴圈的output會寫到這-->
       </div>
 	 
