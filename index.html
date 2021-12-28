@@ -91,18 +91,14 @@
 				return false;
 			}
 			else {
-				//alert("你推薦的 " + r + " 已送出" + w);
-				
-				
-				
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 				//alert(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
-				$("#formresponse").html(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
+				//$("#formresponse").html(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 			
 				alert(formresponse);
 				//var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
-				
+				var NewOpen = window.open(MySubmit);
 				
 				alert("你推薦的 " + r + " 已送出");
 				location.reload(true/false); //送出後刷新頁面
