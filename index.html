@@ -132,10 +132,10 @@
           text += '	<div class="col s12 m4 l3">';  
           text += '  <div class="card hoverable">';
           text += '    <div class="card-image">';
-          text += '      <a href="description.html?id='+i+'"> <img src="'+data.getFormattedValue(i,0)+'" width="100%">'
+          text += '      <a href="description.html?id='+(i-1)+'"> <img src="'+data.getFormattedValue(i,0)+'" width="100%">'
           text += '    </div>';
 		  text += '    <div class="card-content indigo lighten-5">';
-          text += '			<a class="indigo-text text-darken-3" href="description.html?id='+i+'">'+data.getFormattedValue(i,1)+'</a>';
+          text += '			<a class="indigo-text text-darken-3" href="description.html?id='+(i-1)+'">'+data.getFormattedValue(i,1)+'</a>';
 		  text += '	   </div>';
           text += '  </div>';
           text += '	</div>';
@@ -163,7 +163,7 @@
       </nav>
       
       <div class="row" id="demo">
-        <!--下面迴圈的output會寫到這-->
+        <!--上面迴圈的output會寫到這-->
       </div>
 	  <!--
       <script>
