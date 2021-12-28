@@ -99,7 +99,8 @@
 			
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//var NewOpen = window.open(MySubmit);
-				add_action( NewOpen, MySubmit, 10, 2);
+				document.getElementById(MySubmit).submit();
+				//add_action( NewOpen, MySubmit, 10, 2);
 				
 				alert("你推薦的 " + r + " 已送出");
 				location.reload(true/false); //送出後刷新頁面
