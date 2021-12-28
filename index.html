@@ -175,7 +175,6 @@
           var query = new google.visualization.Query(url);
           query.setQuery('select *');
           query.send(processSheetsData_feedback);
-		  alert(query);
         }
       
         function processSheetsData_feedback(response_feedback) {
@@ -186,7 +185,9 @@
           
           var output="";
 		  for (var i = 1; i < rows; i++) {
-		  output += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
+		  output += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
+		  output += '	<p>'+data.getFormattedValue(i,0)+'<br/></p>';
+		  output += '</div>'
         }
           document.getElementById("feedback-stuff").innerHTML = output;
         }
