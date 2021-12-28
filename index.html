@@ -91,6 +91,7 @@
 				return false;
 			}
 			else {
+			alert("你推薦的 " + r + " 已送出");
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 				alert("你推薦的 " + r + " 已送出");
@@ -180,19 +181,15 @@
 				
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">favorite_border</i>
-				  <div data-role="fieldcontain">
 				    <input type="text" name="recommend">
 				    <label for="icon_prefix">劇名</label>
-				  </div>
 				</div>
 			  </div>
 			  <div class="row">
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">feedback</i>
-				  <div data-role="fieldcontain">
 				    <input type="text" name="reason">
 				    <label for="icon_telephone">理由</label>
-				  </div>
 				</div>
 			  </div>
 			  
