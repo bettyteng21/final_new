@@ -163,28 +163,28 @@
         google.charts.load('current', {'packages':['corechart']});
 
         // Set a callback to run when the Google Visualization API is loaded.	
-        google.charts.setOnLoadCallback(init);
+        google.charts.setOnLoadCallback(init_feedback);
        
-        function init() {
+        function init_feedback() {
           // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
           // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
           // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
           // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
-          var url =
+          var url_feedback =
             'https://docs.google.com/spreadsheets/d/1nsgAFVXiQaUGBaSv_vgNPRugesst5uU8Qey4f0h2iy4/gviz/tq?sheet=表單回應1';
-          var query = new google.visualization.Query(url);
-          query.setQuery('select *');
-          query.send(processSheetsData);
+          var query_feedback = new google.visualization.Query(url_feedback);
+          query_feedback.setQuery('select *');
+          query_feedback.send(processSheetsData_feedback);
         }
       
-        function processSheetsData(response) {
-          var data = response.getDataTable();
-          var columns = data.getNumberOfColumns();
-          var rows = data.getNumberOfRows();
+        function processSheetsData_feedback(response) {
+          var data_feedback = response.getDataTable();
+          var columns_feedback = data.getNumberOfColumns();
+          var rows_feedback = data.getNumberOfRows();
           
           var output="";
-		  for (var i = 1; i < rows; i++) {
-		  output += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
+		  for (var i = 1; i < rows_feedback; i++) {
+		  output += '<p>'+data_feedback.getFormattedValue(i,0)+'<br/></p>';
         }
           document.getElementById("feedback-stuff").innerHTML = output;
         }
