@@ -173,26 +173,31 @@
 	  <span id="formresponse"></span>
 	  <div class="row">
 		<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">
+		<p style="font-size: 20px; font-weight: bold;">目前劇荒中，求好劇推薦<br/></p>
 			<form class="col s12" name="form1" action="javascript:formresponse();" style="border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
-			  <p style="font-size: 20px; font-weight: bold;">目前劇荒中，求好劇推薦<br/></p>
+			  
 			  <div class="row">
+				<div data-role="fieldcontain">
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">favorite_border</i>
 				  <input type="text" name="recommend">
 				  <label for="icon_prefix">劇名</label>
 				</div>
+				</div>
 			  </div>
 			  <div class="row">
+				<div data-role="fieldcontain">
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">feedback</i>
 				  <input type="text" name="reason">
 				  <label for="icon_telephone">理由</label>
+				 </div>
 				</div>
 			  </div>
 			  
 			  <button class="btn waves-effect waves-light" name="action" style="background-color:#e8eaf6;">
 				<i class="material-icons right" style="color:#3949ab;">send</i>
-				<input type="submit" value="Submit" style="color:#3949ab;">
+				<input type="submit" value="Submit" style="color:#3949ab;"/>
 			  </button>
 			  <p><br/></p>
 			</form>
