@@ -175,10 +175,11 @@
           var query = new google.visualization.Query(url);
           query.setQuery('select *');
           query.send(processSheetsData_feedback);
+		  alert("aaa");
         }
       
         function processSheetsData_feedback(response_feedback) {
-		alert("aaa");
+		
           var data = response_feedback.getDataTable();
           var columns = data.getNumberOfColumns();
           var rows = data.getNumberOfRows();
