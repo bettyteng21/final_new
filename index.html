@@ -95,12 +95,11 @@
 				//https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/viewform?usp=pp_url&entry.1420997620=d&entry.1242179039=d
 				//var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
-				
+				$("#formresponse").html(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 			
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//var NewOpen = window.open(MySubmit);
 				document.getElementById(MySubmit).submit();
-				//add_action( NewOpen, MySubmit, 10, 2);
 				
 				alert("你推薦的 " + r + " 已送出");
 				location.reload(true/false); //送出後刷新頁面
