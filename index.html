@@ -188,7 +188,11 @@
 		  output += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
 		  output += '	<div class="col s12">'; 
 		  output += '  		<div class="card hoverable">';
-		  output += '			<p>劇名'+data.getFormattedValue(i,1)+'<br/></p>';
+		  output += '    		<div class="card-content indigo lighten-5">';
+		  output += '				<p>劇名 '+data.getFormattedValue(i,1)+'<br/></p>';
+		  output += '				<hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">';
+		  output += '				<p>理由 '+data.getFormattedValue(i,2)+'<br/></p>';
+		  output += '			</div>';
 		  output += '		</div>';
 		  output += '	</div>';
 		  output += '</div>';
