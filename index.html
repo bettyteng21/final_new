@@ -184,9 +184,10 @@
           var rows = data.getNumberOfRows();
           
           var output="";
+		  output += '<div class="rows">';
 		  for (var i = 1; i < rows; i++) {
-		  output += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
-		  output += '	<div class="col s12">'; 
+		  
+		  output += '	<div class="col s12 m6">'; 
 		  output += '  		<div class="card hoverable">';
 		  output += '    		<div class="card-content indigo lighten-5">';
 		  output += '				<p style="font-size:15px;">劇名 '+data.getFormattedValue(i,1)+'<br/></p>';
@@ -195,8 +196,9 @@
 		  output += '			</div>';
 		  output += '		</div>';
 		  output += '	</div>';
-		  output += '</div>';
+		  
         }
+		output += '</div>';
           document.getElementById("feedback-stuff").innerHTML = output;
         }
       </script>
@@ -217,7 +219,7 @@
         </div>
       </nav>
       
-      <div class="row" id="demo">
+      <div id="demo" class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">
         <!--上面迴圈的output會寫到這-->
       </div>
 	 
