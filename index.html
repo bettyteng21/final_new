@@ -78,7 +78,7 @@
 	  <!-- 匯入google表單 -->
 	  <!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
 	  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-	  <script type="text/javascript">
+	  <script>
 		function formresponse() {
 			var r = document.forms["form1"]["recommend"].value;
 			var w = document.forms["form1"]["reason"].value;
@@ -96,7 +96,7 @@
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 				alert(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
-				$("#formresponse").html(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
+				$("#formresponse").html(decodeURIComponent("%3Cscript src='" + MySubmit + "'%3E%3C/script%3E"));
 			
 				//var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
 				//var NewOpen = window.open(MySubmit);
