@@ -170,25 +170,23 @@
           // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
           // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
           // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
-          var url_feedback =
+          var url =
             'https://docs.google.com/spreadsheets/d/1nsgAFVXiQaUGBaSv_vgNPRugesst5uU8Qey4f0h2iy4/gviz/tq?sheet=表單回應1';
-          var query_feedback = new google.visualization.Query(url_feedback);
-          query_feedback.setQuery('select *');
-          query_feedback.send(processSheetsData_feedback);
+          var query = new google.visualization.Query(url);
+          query.setQuery('select *');
+          query.send(processSheetsData_feedback);
         }
       
         function processSheetsData_feedback(response_feedback) {
-          var data_feedback = response query_feedback.getDataTable();
-          var columns_feedback = data query_feedback.getNumberOfColumns();
-          var rows_feedback = data query_feedback.getNumberOfRows();
+          var data = response_feedback.getDataTable();
+          var columns = data.getNumberOfColumns();
+          var rows = data.getNumberOfRows();
           
-          var text_feedback="";
-		  alret(rows_feedback);
-		  for (var i = 1; i < rows_feedback; i++) {
-		  
-		  text_feedback += '<p>'+data_feedback.getFormattedValue(i,0)+'<br/></p>';
+          var output="";
+		  for (var i = 1; i < rows; i++) {
+		  output += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
         }
-          document.getElementById("feedback-stuff").innerHTML = text_feedback;
+          document.getElementById("feedback-stuff").innerHTML = output;
         }
       </script>
 	  
