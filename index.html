@@ -177,21 +177,22 @@
 			<form class="col s12" name="form1" action="javascript:formresponse();" style="border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
 			  <p style="font-size: 20px; font-weight: bold;">目前劇荒中，求好劇推薦<br/></p>
 			  <div class="row">
-				<div data-role="fieldcontain">
+				
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">favorite_border</i>
-				  <input type="text" name="recommend">
-				  <label for="icon_prefix">劇名</label>
-				</div>
+				  <div data-role="fieldcontain">
+				    <input type="text" name="recommend">
+				    <label for="icon_prefix">劇名</label>
+				  </div>
 				</div>
 			  </div>
 			  <div class="row">
-				<div data-role="fieldcontain">
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">feedback</i>
-				  <input type="text" name="reason">
-				  <label for="icon_telephone">理由</label>
-				 </div>
+				  <div data-role="fieldcontain">
+				    <input type="text" name="reason">
+				    <label for="icon_telephone">理由</label>
+				  </div>
 				</div>
 			  </div>
 			  
