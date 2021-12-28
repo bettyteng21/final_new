@@ -133,7 +133,11 @@
           var rows = data.getNumberOfRows();
           
           var text="";
-		  for (var i = 1; i < rows; i++) {
+		  var i;
+		  if(rows >= 6) i= rows-6;
+		  else i=0;
+		  
+		  for (i = 1; i < rows; i++) {
 		  text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';		
           text += '	<div class="col s12 m4 l3">';  
           text += '  <div class="card hoverable">';
