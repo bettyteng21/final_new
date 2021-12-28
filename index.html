@@ -14,10 +14,6 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	  
-	  <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
-      <script src="https://www.gstatic.com/charts/loader.js"></script>
-	  
-	  
       <style>
            /*import我自己上傳的字體*/
       	  @font-face {
@@ -73,11 +69,6 @@
 		#myBtn:hover {
 		  background-color: #555; /* Add a dark-grey background on hover */
 		}
-		
-		
-
-		
- 	      
       </style>
 	  
 	  <!-- 匯入google表單 -->
@@ -104,6 +95,54 @@
 		}
 	  </script>	
 	 
+	 <!-- 表單的部分 ->
+      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
+      <script src="https://www.gstatic.com/charts/loader.js"></script>
+      
+      <script>
+        // https://developers.google.com/chart/interactive/docs/quick_start
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.	
+        google.charts.setOnLoadCallback(init);
+       
+        function init() {
+          // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
+          // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
+          // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
+          // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
+          var url =
+            'https://docs.google.com/spreadsheets/d/11TP680c-btT7WzdvkKKz6moEfbpHK6aaztWH0j0pWdM/gviz/tq?sheet=工作表1';
+          var query = new google.visualization.Query(url);
+          query.setQuery('select *');
+          query.send(processSheetsData);
+        }
+      
+        function processSheetsData(response) {
+          var data = response.getDataTable();
+          var columns = data.getNumberOfColumns();
+          var rows = data.getNumberOfRows();
+          
+          var text="";
+		  for (i = 1; i < picture.length; i++) {
+		  text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';		
+          text += '	<div class="col s12 m4 l3">';  
+          text += '  <div class="card hoverable">';
+          text += '    <div class="card-image">';
+          text += '      <a href="description.html?id='+i+'"> <img src="'+data.getFormattedValue(i,0)+'" width="100%">'
+          text += '    </div>';
+		  text += '    <div class="card-content indigo lighten-5">';
+          text += '			<a class="indigo-text text-darken-3" href="description.html?id='+i+'">'+data.getFormattedValue(i,1)+'</a>';
+		  text += '	   </div>';
+          text += '  </div>';
+          text += '	</div>';
+		  text += '</div>';
+        }
+          document.getElementById("demo").innerHTML = text;
+        }
+   
+      </script>
 	  
     </head>
     
@@ -124,6 +163,7 @@
       <div class="row" id="demo">
         <!--下面迴圈的output會寫到這-->
       </div>
+	  <!--
       <script>
         var text="";
         const picture = ["https://i.imgur.com/s7d2Yah.jpg", 
@@ -159,7 +199,7 @@
         }
      
         document.getElementById("demo").innerHTML = text;
-      </script>
+      </script> -->
 	  
 	  <!--水平分割線-->
 	  <hr style="width:70%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">

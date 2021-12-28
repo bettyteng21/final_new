@@ -9,10 +9,6 @@
 
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	  
-	  <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
-      <script src="https://www.gstatic.com/charts/loader.js"></script>
-	  
       
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -77,10 +73,9 @@
       
     </style>
 	
-	<!-- 表單的部分 ->
+	<!-- 試算表的部分 ->
 	  <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
 	  <script src="https://www.gstatic.com/charts/loader.js"></script>
-	  
 	  <script>
 		// https://developers.google.com/chart/interactive/docs/quick_start
 		// Load the Visualization API and the corechart package.
@@ -164,9 +159,7 @@
 		 
 		  document.getElementById("demo").innerHTML = text;
 		}
-
 	  </script>
-	
 	
 </head> 
 
@@ -185,151 +178,9 @@
   </nav>
 
 	<div class='row' id="demo">
-      <!--下面的output會寫到這-->
+      <!--上面的output會寫到這-->
 	</div>
   
-  <!--
-	<script>
-		var X = decodeURIComponent(GetUrlVar('id'));
-			var i=Number(X);
-			var text="";
-
-		var element = document.getElementById('back-link'); //按下navbar的logo即可回首頁(上一頁)
-		element.setAttribute('href', document.referrer);
-		element.onclick = function() {
-		  history.back();
-		  return false;
-		}
-		  
-			const picture = ["https://i.imgur.com/s7d2Yah.jpg", 
-						 "https://i.imgur.com/kFqmkE6.jpg", 
-						 "https://i.imgur.com/s7VuAMF.jpg", 
-						 "https://i.imgur.com/n2oFBre.png",
-						 "https://i.imgur.com/znYcrOa.jpg",
-						 "https://i.imgur.com/FaMCkws.jpg",        
-						 "https://i.imgur.com/cydhcUn.jpg",
-						 "https://i.imgur.com/2x7ZAKE.jpg",
-						 "https://i.imgur.com/QAB7uCO.jpg",
-						 "https://i.imgur.com/mDXXIHe.jpg",
-						 "https://i.imgur.com/xGvKsS2.jpg",
-						 "https://i.imgur.com/Rl1Bddv.jpg"];
-		  
-		 const title = ["周生如故", "愛上特種兵", "山河令", "如意芳菲", "致我們暖暖的小時光",
-						"錦衣之下", "致我們單純的小美好", "你是我的城池營壘", "以家人之名", "一生一世", "半是蜜糖半是傷", "變成你的那一天"];
-
-		 const trailer = ["https://www.youtube.com/embed/qmWacAqPesk",
-						  "https://www.youtube.com/embed/EWO1mSeoR-E",
-						  "https://www.youtube.com/embed/niMpltzdG4k",
-						  "https://www.youtube.com/embed/Mv5137bGK8M",
-						  "https://www.youtube.com/embed/PACDqC15Fs4",
-						  "https://www.youtube.com/embed/z5HCkoVxups",
-						  "https://www.youtube.com/embed/DGsNpCgCP6Q",
-						  "https://www.youtube.com/embed/VoC-f26_6tw",
-						  "https://www.youtube.com/embed/LMReWwqD9_c",
-						  "https://www.youtube.com/embed/_dktmszeM18",
-						  "https://www.youtube.com/embed/LAXZdb9S48s",
-						  "https://www.youtube.com/embed/nvxgNrJU6aA"]; 
-
-		 const intro = ["年少成名、戰功赫赫的小南辰王周生辰，立志一生效忠國家，其嚴謹作風和謙遜為人為世人所稱道。名門漼氏獨女漼時宜出生便被指腹為婚為未來太子妃，因與王府是世交，便被長輩送到王府學藝。漼時宜善良可愛、活潑聰慧的個性，在王府深得眾人喜愛，學藝精進也很快，是王府的開心果。點滴相處中，漼時宜欽佩周生辰遠大的志向和儒雅的品格，不知不覺中愛上了這位將軍。無論是守在王府等待捷報，還是與周生辰並肩作戰，漼時宜都是周生辰最堅強的後盾和最溫暖的支撐。兩人情感迅速升溫，但依然發乎情止乎禮。邊關再度告急，周生辰義不容辭領兵出戰，而漼時宜卻須擔負起家族聲譽的責任與太子完婚。奮勇抗敵的周生辰意外重傷，留下給漼時宜的臨終遺言之後不治身亡。",
-						"根據晉江文學城作者折紙螞蟻小說《軍裝下的繞指柔》改編，聚焦特種兵與軍醫兩種職業，從全新角度塑造了男主角梁牧澤（黃景瑜 飾）的軍人形象。他與軍醫夏初（李沁 飾）一同追求理想，履行軍人的職責與使命，也收獲了歷經生死的愛情。",
-						"本劇講述了天窗首領周子舒為求自由，不惜以生命為代價退出組織，命不久矣之際遇上一心滅世的鬼谷谷主溫客行，兩人因卷入江湖紛爭相識相知，最終成為彼此救贖的故事。一場陰謀，兩個知己，五塊寶藏拼圖，廿載恩怨，千百年江湖夢。",
-						"少女傅容生於金匠世家，聰敏好學，由於目睹姐姐的不幸婚姻，遂立誓自強自立，絕不隨波逐流，一定要掌控自己的命運。她逃婚來到京城，在遊園詩會上偶然結識了心高氣傲的肅王徐晉。兩人共同經歷生死，查明了金器殺人案的真相，抓獲了私造兵器的成王徐茂，找出了毒害端妃的真兇。傅容以過人的學識、善良的品格和自強的性格贏得了徐晉的真心愛慕，而徐晉也屢次在危急時刻搭救傅容。在傅容遭遇恩師柳青竹自盡的悲痛時，徐晉鼓勵傅容振作起來，一起找出幕後真兇。傅容在賑災中發現了皇叔徐平的謀反計劃，並利用碧玉金簪找到了徐平的密室，最終逼迫徐平自殺伏罪。經歷過一系列人生變故之後，傅容和徐晉看淡名利，攜手歸隱家園，過上了相知相守的幸福生活。",
-						"司徒末（邢菲 飾）畢業在即，從小便習慣服從安排的她對前途迷茫懵懂，隨波逐流地嘗試各種安排，總是鼓不起勇氣為自己做出選擇。因新老校區並校，物理系的高材生顧未易（林一 飾）闖入司徒末的生活，平淡無奇的生活掀起了啼笑皆非的浪花。幾次三番的交戰讓司徒末和顧未易這對歡喜冤家逐漸走進對方的心底，更是誤打誤撞地成為合租盟友。在相處過程中，兩人逐漸放下偏見，在對方的鼓勵和幫助下，找到人生和事業上的新方向，也收獲愛情。兩人共同經歷了畢業、求職、工作，才明白，原來最溫暖的小時光，就是走對的路、與對的人做對的事。本片根據趙乾乾同名小說改編。",
-						"天賦異稟的六扇門女捕快袁今夏因為一樁案件和性情狠辣的錦衣衛陸繹結下樑子，今夏本以為此生與他再無交集，奈何冤家路窄。朝廷十萬兩修河款不翼而飛，今夏奉命協助陸繹一起下揚州查案，替朝廷找回丟失的官銀。本是道不同不相為謀，卻因驚天密案聯手。兩人從勢同水火到刮目相看再到情難自已，命運的齒輪從此旋轉在一起。然而事與願違，今夏竟是當年夏言案的遺孤，背負家族血仇的她與陸繹之間橫生了無法跨越的鴻溝。最後，兩個有情人歷經苦難，為救百姓、抗倭寇、鋤奸佞，放下家族仇怨，聯手對敵，衝破世俗枷鎖，勇敢地走到了一起。",
-						"改編自趙乾乾同名暢銷小說，主要講述了陳小希與江辰19年間共同成長，從青梅竹馬到錯失後的再次牽手的愛情故事。腹黑傲嬌的天才醫生，蠢萌逗比的元氣少女，全劇氣質俏皮幽默，通過展現陳小希倒追江辰一路上啼笑皆非的日常，記錄了青春時光里最美好的心動時刻，將專屬17歲少男少女之間的青澀感情呈現出來，帶領觀眾重返好時光。",
-						"該劇根據作家沐清雨同名小說改編，講述了新晉住院醫生米佧在醫院聯合特警隊組織的應急救援培訓中，與特警精英邢克壘相識，從一開始因誤會引發的敵對，到幾次意外救援中邢克壘逐漸被米佧的勇敢堅強無私忘我吸引的浪漫愛情故事。",
-						"因為家庭變故，三個沒有血緣關系的小孩成為了彼此新的家人。青梅竹馬一起長大的三兄妹，一同經歷，相互扶持，不因來時坎坷而沮喪，也不因前路漫漫而退縮。然而，原生家庭造成的心理問題如影隨形，他們渴望被愛，卻更加害怕失去。而曾經傷害過他們的人也再次闖入，打著家人的旗號想把他們分開。一邊是彼此認定相互珍惜的新家人，一邊是無法選擇關系淡漠的親生父母，他們艱難抉擇卻還是顧此失彼。他們不想新家人受到傷害，也不想人生被拖向深淵。面對兩難的境遇，他們勇敢面對，也努力讓父母直面了自己的問題。在不同關系的愛中，他們教會了自己成長，明晰了自己的內心一唯有直面原生家庭的影響，以家人之名相互治愈，才能清醒無畏的走下去，成為更好的自己。",
-						"本劇講述溫婉可人、處事低調的業內頂尖配音演員時宜，一日在機場偶遇了儒雅的海歸化學教授周生辰，他們一見如故。 周生辰為了要拯救日漸沒落的紫砂壺工廠，答應母親的條件訂婚繼承家業，但他婉拒了家裡安排，而是向頗有好感的時宜提出訂婚請求。時宜內心早已認定，欣然答應。先婚後愛的點滴相處中，兩人默契逐漸產生，兩顆心慢慢靠近。 為了振興家鄉的紫砂壺工藝，周生辰與家中長輩產生了經營理念上的分歧，面對親情和事業的兩難境地，幸得時宜始終相伴，並給予了最堅實的支持和鼓勵，兩人最終攜手最大程度地保全了傳統手工藝。風雨過後，情意更為深重。然而此時，時宜卻為了救周生辰遭奸人陷害，身受重傷重度昏迷。周生辰交接完家中事業專心陪伴照料，終將愛妻喚醒，兩人約定相伴此生此世永不分離。 本劇是根據墨寶非寶的原著作品《一生一世美人骨》改編。",
-						"江君，一個對眼淚重度過敏的女孩，有著經濟學與心理學雙碩士學位，父母給予的優越而寵溺環境造就了她天性灑脫、理想主義的性格，畢業後的她在一家公益組織工作，追尋著屬於自己內心的生活。不料，父親的意外去世卻使她站在了人生的三叉路口，江君最終決定進入頂級投行公司MH完成父親的遺願。在MH里，江君意外與童年玩伴袁帥相逢，但高興不過三秒後，卻發現自己童年的保護傘，那個溫柔的袁帥哥哥竟然處處與自己為敵，在狼性文化的投行公司里，有人在暗中給她布局設套，有人視她為棋子兼眼中釘，但江君憑借著自己善良而細膩的天性，出眾的情商以及天才般的想象力，判斷著人和項目覆雜的變數，在暴風雨的中心，她開始了自己的征途，經歷了一番番風霜雪雨後，最終收獲了自己的事業與愛情。",
-						"天生“對頭”的娛記余聲聲和頂流愛豆江熠因意外互換了生活。面對現狀，兩人毫無防備，只能相互指導，幫對方遮掩，發生了一系列甜蜜搞笑的事情。經典套路下的反套路，在互換生活的甜蜜愛情設定下是對人生以及愛情的思考，人是多面的，換位思考，排除掉刻板印象。精心打造了一部小而美的良心之作。"];
-
-		 const director = ["郭虎",
-						   "嵇天毅",
-						   " 成志超 / 馬華幹 / 李宏宇",
-						   "林健龍 / 陳國華",
-						   "祝東寧",
-						   "尹濤",
-						   "唐彬 / 楊龍",
-						   "張彤",
-						   "丁梓光",
-						   "沈陽 / 賁放",
-						   "於中中 / 吳建新",
-						   "王征"];                        
-
-		 const actor = ["任嘉倫 / 白鹿",
-						"黃景瑜 / 李沁",
-						"龔俊 / 張哲瀚",
-						"張哲瀚 / 鞠婧祎",
-						"林一 / 邢菲",
-						"任嘉倫 / 譚松韻",
-						"胡一天 / 沈月",
-						"白敬亭 / 馬思純",
-						"宋威龍 / 張新成 / 譚松韻",
-						"任嘉倫 / 白鹿",
-						"羅雲熙 / 白鹿",
-						"張新成 / 梁潔"];
-		
-		 const fliming_loc= ["https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.436198632667!2d120.31470031415897!3d29.151815667141076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b2711210c00001%3A0x5b6b578b1b961e43!2z5qmr5bqX5b2x6KaW5Z-O!5e0!3m2!1szh-TW!2stw!4v1638757051861!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d433968.0632093855!2d119.66440648478272!3d31.814765857758676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b412ca0d729ef3%3A0xc0b4244a816f3c38!2z5Lit5ZyL5rGf6JiH55yB5bi45bee5biC!5e0!3m2!1szh-TW!2stw!4v1638756896588!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.436198632667!2d120.31470031415897!3d29.151815667141076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b2711210c00001%3A0x5b6b578b1b961e43!2z5qmr5bqX5b2x6KaW5Z-O!5e0!3m2!1szh-TW!2stw!4v1638757051861!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.436198632667!2d120.31470031415897!3d29.151815667141076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b2711210c00001%3A0x5b6b578b1b961e43!2z5qmr5bqX5b2x6KaW5Z-O!5e0!3m2!1szh-TW!2stw!4v1638757051861!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442854.22810967435!2d121.2917552921011!3d29.87007993633925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x344d6354630858f7%3A0x948723f846ccf173!2z5Lit5ZyL5rWZ5rGf55yB5a-n5rOi5biC!5e0!3m2!1szh-TW!2stw!4v1638757263162!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3484.436198632667!2d120.31470031415897!3d29.151815667141076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b2711210c00001%3A0x5b6b578b1b961e43!2z5qmr5bqX5b2x6KaW5Z-O!5e0!3m2!1szh-TW!2stw!4v1638757051861!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d441105.5002645006!2d119.89168529684741!3d30.261685452471962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x344bb629439aaa99%3A0xa7bfd183824de83a!2z5Lit5ZyL5rWZ5rGf55yB5p2t5bee5biC!5e0!3m2!1szh-TW!2stw!4v1638757378786!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d432624.57504247065!2d118.45754669287994!3d32.09954245361629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b58c9b668dcd83%3A0x8ffbb60b79df1b06!2z5Lit5ZyL5rGf6JiH55yB5Y2X5Lqs5biC!5e0!3m2!1szh-TW!2stw!4v1638757494173!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232395.10231717103!2d117.96911745341244!3d24.479445557031802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34148379e5bfeb27%3A0x28a0670a9668d056!2z5Lit5ZyL56aP5bu655yB5buI6ZaA5biC!5e0!3m2!1szh-TW!2stw!4v1638757585090!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d422088.38386994525!2d108.68700613622687!3d34.25962917893478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x366379e922ac17b9%3A0x85d466fda794582e!2z5Lit5ZyL6Zmd6KW_55yB6KW_5a6J5biC!5e0!3m2!1szh-TW!2stw!4v1638757686799!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d873438.9279528719!2d120.91623683367153!3d31.2243083483807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b27040b1f53c33%3A0x295129423c364a1!2z5Lit5ZyL5LiK5rW35biC5LiK5rW3!5e0!3m2!1szh-TW!2stw!4v1638757749502!5m2!1szh-TW!2stw",
-							 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232395.10231717103!2d117.96911745341244!3d24.479445557031802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34148379e5bfeb27%3A0x28a0670a9668d056!2z5Lit5ZyL56aP5bu655yB5buI6ZaA5biC!5e0!3m2!1szh-TW!2stw!4v1638757856398!5m2!1szh-TW!2stw"];
-
-         ////////image+introduction 放在一個card中/////////
-			 text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
-             text += '<div class="card z-depth-0">'; //z-depth-0 :不顯示card edge的shadow
-             text += '<div class="col s4 m1 l3">'; 	
-			 text += '<p><br/></p>';		 
-             text += '    <div class="card-image">';
-             text += '      <a target="_blank" href="'+picture[i]+'">' //點圖片就可以看到完整大小的圖片
-             text += "        <img class='materialboxed' src= '"+picture[i]+"' width='100%'>";
-             text += '      </a>';
-             text += '    </div>'           
-             text += '</div>'
-          
-             text += ' <div class="col s5 l9">';  
-             text += ' 	<div class="card-content">';         
-             text += '  	<h2> ' + title[i] + '</h2>';
-             text += '  	<div class="card-discrption">';
-             text += '      	<p>'+intro[i]+'</p>';
-             text += '      </div>';
-             text += '        <h5> 導演: ' + director[i] + '</h5>';
-             text += '        <h5> 主演: ' + actor[i] + '</h5>';
-             text += '  </div>';
-             text += ' </div>';
-             text += ' </div>'
-			 text += ' </div>'
-
-         ////////trailer////////
-		 text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
-		 
-		 text += '	<iframe width="642" height="361" src="'+trailer[i]+'" title="YouTube video player" frameborder="0" allow="accelerometer;';
-         text += '	autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-		 text += '</div>'
-		 
-		 //////////水平分割線///////
-		 text += '<p><br/></p>';
-		 text += '<hr style="width:80%; height:2px; text-align:center; border-width:0;color:#e0e0e0 ;background-color:#e0e0e0">';
-		 
-		 
-		 ////////google map//////
-		 text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
-		 text += '	<p style="font-size: 25px; font-weight: bold; text-align: center;">拍攝地點</p>';
-		 text += '	<iframe src="'+fliming_loc[i]+'" width="600" height="350" style="border:0; position:relative; top: 10px;" allowfullscreen="" loading="lazy"></iframe>';
-	     text += '</div>'
-		 text += '<p><br/></p>';
-	   
-		 document.getElementById("demo").innerHTML = text;
-
-	</script>-->
-	
    <!--footer-->
    <footer class="page-footer indigo lighten-2">
     <div class="container">
