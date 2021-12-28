@@ -182,11 +182,11 @@
           var columns = data.getNumberOfColumns();
           var rows = data.getNumberOfRows();
           
-          var text="";
+          var output="";
 		  for (var i = 1; i < rows; i++) {
-		  text += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
+		  output += '<p>'+data.getFormattedValue(i,0)+'<br/></p>';
         }
-          document.getElementById("feedback-stuff").innerHTML = text;
+          document.getElementById("feedback-stuff").innerHTML = output;
         }
       </script>
 	  
