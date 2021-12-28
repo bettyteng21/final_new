@@ -92,8 +92,8 @@
 			}
 			else {
 				var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
-				$("#formresponse").html(unescape("%3Cscript src='" + MySubmit + "'%3E%3C/script%3E"));
-				alert("你推薦的" + r + "已送出");
+				$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
+				alert("你推薦的 " + r + " 已送出");
 				location.reload(true/false); //送出後刷新頁面
 			}
 		}
@@ -190,7 +190,7 @@
 				</div>
 			  </div>
 			  
-			  <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color:#e8eaf6;">
+			  <button class="btn waves-effect waves-light" name="action" style="background-color:#e8eaf6;">
 				<i class="material-icons right" style="color:#3949ab;">send</i>
 				<input type="submit" value="Submit" style="color:#3949ab;">
 			  </button>
