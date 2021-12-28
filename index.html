@@ -134,11 +134,8 @@
           
           var text="";
 		  var i;
-		  
-		  if(rows >= 6) i= rows-6;
-		  else i=0;
-		  alert(i);
-		  for (; i < rows; i++) {
+		 
+		  for (i=1; i < rows; i++) {
 		  text += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';		
           text += '	<div class="col s12 m4 l3">';  
           text += '  <div class="card hoverable">';
@@ -184,11 +181,15 @@
           var rows = data.getNumberOfRows();
           
           var output="";
+		  var i;
 		  output += '<p style="font-size: 20px; font-weight: bold;">大家推薦的劇<br/></p>';
 		  output += '<p style="font-size: 12px; font-weight: bold;">節錄自前面填寫的表單<br/></p>';
 		  output += '<div class="row">';
 
-		  for (var i = 1; i < rows; i++) {
+			if(rows >= 6) i= rows-6;
+		  else i=1;
+		  alert(i);
+		  for (; i < rows; i++) {
 		  
 		  output += '	<div class="col s12 m6">'; 
 		  output += '  		<div class="card hoverable">';
