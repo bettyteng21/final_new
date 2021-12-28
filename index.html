@@ -97,10 +97,11 @@
 				//$("#formresponse").html(decodeURIComponent("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
 
 				//var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLScd2xTVhWcuezzL8_DmPCBB72fL0SsqkmIQkQ16hFBgoxry3Q/formResponse?entry.1420997620=" + r + "&entry.1242179039=" + w + "&submit=Submit";
-				var NewOpen = window.open(MySubmit, '','left=10000,top=10000,width=0,height=0');	
+				//var NewOpen = window.open(MySubmit, '','left=10000,top=10000,width=0,height=0');	
+				var NewOpen = window.open(MySubmit);	
 				alert("你推薦的 " + r + " 已送出");
 				location.reload(true/false); //送出後刷新頁面
-				NewOpen.close();
+				//NewOpen.close();
 			}
 		}
 	  </script>	
@@ -235,6 +236,7 @@
 		
 			<form class="col s12" name="form1" action="javascript:formresponse();" style="border-style: solid; border-color:gray; border-radius: 5px; text-align: center;">
 			  <p style="font-size: 20px; font-weight: bold;">目前劇荒中，求好劇推薦<br/></p>
+			  <p style="font-size: 12px; font-weight: bold;">本表單會自動匯入google form<br/></p>
 			  <div class="row">
 				<div class="input-field col s10">
 				  <i class="material-icons prefix">favorite_border</i>
