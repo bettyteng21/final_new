@@ -186,8 +186,12 @@
           var output="";
 		  for (var i = 1; i < rows; i++) {
 		  output += '<div class="container" style="width: 85%;height: 100%;max-width: 100%;margin: auto;">';
-		  output += '	<p>'+data.getFormattedValue(i,0)+'<br/></p>';
-		  output += '</div>'
+		  output += '	<div class="col s12">'; 
+		  output += '  		<div class="card hoverable">';
+		  output += '			<p>劇名'+data.getFormattedValue(i,1)+'<br/></p>';
+		  output += '		</div>';
+		  output += '	</div>';
+		  output += '</div>';
         }
           document.getElementById("feedback-stuff").innerHTML = output;
         }
